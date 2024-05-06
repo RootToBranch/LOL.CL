@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+}
+
+    @font-face {
+      font-family: 'Pretendard';
+      font-style: normal;
+      font-weight: 200;
+      font-display: swap;
+      src: local('Pretendard'), url('/fonts/Pretendard-Light') format('woff');
+    }
+    @font-face {
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: normal;
+        font-display: swap;
+        src: local('Pretendard'), url('/fonts/Pretendard-Light') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: local('Pretendard'), url('/fonts/Pretendard-Light') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Pretendard'), url(${NotoSansBold}) format('woff');
+    }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Pretendard';
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 500px;
+}
+.searchSection {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+  height: 60px;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+.searchSection * {
+  display: block;
+}
+.searchSection input {
+
+  /* padding: 15px 75px; */
+  font-size: 16px;
+
+
+  font-family: 'Pretendard';
+}
+
+#search {
+  position: absolute;
+  /* width: 120px; */
+  height: 60px;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+
+  color: rgb(208, 208, 208);
+  transform: translateX(160px);
+  /* 너가 알아서 해 */
+  opacity: 1;
+  transition: 0.25s opacity;
+}
+#search:hover {
+  color: black;
+  transition: 0.25s color;
+}
+#url:placeholder-shown + #search {opacity: 0}
+
+
+#user, #user2 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+
+  text-align: center;
+  line-height: 60px;
+  color: rgb(208, 208, 208);
+
+  transform: translateX(-160px);
+  /* 너가 알아서 해 */
+}
+#user {
+  z-index: 9;
+}
+#user2  {
+  color: black;
+}
+.fa-user {
+  background-color: black;
+  opacity: 1;
+  transition: opacity 0.25s;
+}
