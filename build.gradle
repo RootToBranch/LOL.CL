@@ -20,6 +20,8 @@ dependencies {
 	implementation 'org.projectlombok:lombok'
 	implementation 'com.auth0:java-jwt:3.10.0'
 	implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
     testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

@@ -219,5 +219,6 @@ bin/
 *.bat
 package-lock.json
 gradle/
+application.yml
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,java,react,intellij,visualstudiocode
