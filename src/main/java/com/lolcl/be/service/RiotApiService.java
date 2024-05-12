@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.lolcl.be.model.AccountDto;
 import com.lolcl.be.model.MatchDto;
-import com.lolcl.be.model.SummonerDTO;
+import com.lolcl.be.model.SummonerDto;
 import com.lolcl.be.model.User;
 import com.lolcl.be.service.connect.ConnectApiService;
 
@@ -31,7 +31,7 @@ public class RiotApiService implements RiotService
 
     MatchDto matchDto;
     AccountDto accountDto;
-    SummonerDTO summonerDTO;
+    SummonerDto summonerDTO;
 
     @Override
     public ResponseEntity<AccountDto> accountInfo(String playername) throws UnsupportedEncodingException 
@@ -46,13 +46,13 @@ public class RiotApiService implements RiotService
     }
     
     @Override
-    public ResponseEntity<SummonerDTO> summonerInfo(String puuid, String region) throws UnsupportedEncodingException 
+    public ResponseEntity<SummonerDto> summonerInfo(String puuid, String region) throws UnsupportedEncodingException 
     {
         puuid = URLDecoder.decode(puuid, "UTF-8");
         // region = kr, na1, ...
         String url = MessageFormat.format("https://{0}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{1}",
                                     region, puuid);
-        ResponseEntity<SummonerDTO> connected = connectApiService.connect(url, summonerDTO);
+        ResponseEntity<SummonerDto> connected = connectApiService.connect(url, summonerDTO);
         return connected;
     }
 
@@ -61,7 +61,7 @@ public class RiotApiService implements RiotService
     public ResponseEntity<MatchDto> matchInfo(String region, String matchid) 
     {
         String region_americas[] = {"na1", "br1", "la1", "la2"};
-        String region_asia[] = {"jp1, kr"};
+        String region_asia[] = {"jp1", "kr"};
         String region_europe[] = {"eun1", "euw1", "tr1", "ru"};
         String region_sea[] = {"oc1", "ph2", "sg2", "th2", "tw2", "vn2"};
         // if(Arrays.asList(continents).contains(region)) break;
@@ -72,6 +72,8 @@ public class RiotApiService implements RiotService
         // boolean sea = Arrays.asList(region_sea).contains(region);
 
         String select_region;
+
+
 
         if(americas) select_region = "americas";
         else if(asia) select_region = "asia";
@@ -90,7 +92,7 @@ public class RiotApiService implements RiotService
     public User userInfo(String playername, String region) throws UnsupportedEncodingException
     {
         AccountDto account = this.accountInfo(playername).getBody();
-        SummonerDTO summoner = this.summonerInfo(account.puuid(), region).getBody();
+        SummonerDto summoner = this.summonerInfo(account.puuid(), region).getBody();
         MatchDto match = this.matchInfo(playername, region).getBody();
         
         User user = new User(summoner.id(), summoner.accountId(), summoner.puuid(), account.gameName(), summoner.profileIconId(), summoner.revisionDate(), summoner.summonerLevel(), match);

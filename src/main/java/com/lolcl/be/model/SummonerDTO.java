@@ -3,7 +3,7 @@ package com.lolcl.be.model;
 import lombok.Builder;
 
 @Builder
-public record SummonerDTO(
+public record SummonerDto(
     String id,
     String accountId,
     String puuid,
