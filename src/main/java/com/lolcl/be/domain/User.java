@@ -7,12 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Setter
+@NoArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -27,4 +28,13 @@ public class User {
    
     @Column(columnDefinition = "INT", nullable = false)   
     private int level;
+
+    @Builder
+    public User(int id, String puuid, String name, int level) {
+        this.id = id;
+        this.puuid = puuid;
+        this.name = name;
+        this.level = level;
+    }
+
 }
